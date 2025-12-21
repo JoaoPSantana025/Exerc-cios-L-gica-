@@ -4,24 +4,51 @@ Altere o programa anterior permitindo ao usuário informar as populações e as 
 Valide a entrada e permita repetir a operação.
 '''
 
-pop_a = int(input("Digite o valor inicial da população da cidade A: "))
-pop_b = int(input("Digite o valor inicial da população da cidade B: "))
-anos = 0
-
-taxa_a= float(input("Digite o valor da taxa de crescimento da população da cidade A: "))
-taxa_b= float(input("Digite o valor da taxa de crescimento da população da cidade B: "))
 
 while True:
 
-    if taxa_a<=taxa_b:
-        print("Como a cidade A tem menos habitantes e sua taxa de crescimento é menor do que a da cidade B, seu número de habitantes nunca será maior que a da outra cidade.")
-        break
-    if pop_a>=pop_b:
-        print(f"Vai demorar {anos} anos para a população da cidade A ultrapassar a da cidade B")
-        break
+    pop_a = int(input("Digite o valor inicial da população da cidade A: "))
+    pop_b = int(input("Digite o valor inicial da população da cidade B: "))
 
+
+    taxa_a= float(input("Digite o valor da taxa de crescimento da população da cidade A: "))
+    taxa_b= float(input("Digite o valor da taxa de crescimento da população da cidade B: "))
+
+    if pop_a <= 0 or pop_b <= 0 or taxa_a <= 0 or taxa_b <= 0:
+        print("Populações e taxas devem ser maiores que zero.")
+        continue
+
+    if taxa_a <= taxa_b and pop_a < pop_b:
+        print("A população da cidade A nunca ultrapassará a da cidade B.")
     else:
-        pop_a += pop_a * taxa_a
-        pop_b += pop_b * taxa_b
-        anos += 1
+        anos = 0
+
+        while pop_a < pop_b:
+                pop_a += pop_a * taxa_a
+                pop_b += pop_b * taxa_b
+                anos += 1
+        
+    
+        print(f"Vai demorar {anos} anos para a população da cidade A ultrapassar ou igualar a da cidade B.")
+
+    repetir = input("Deseja repetir a operação? (s/n): ").lower()
+    if repetir != 's':
+        break
+   
+
+#Versão ia
+
+while True:
+    pop_a = int(input("Digite a população inicial da cidade A: "))
+    pop_b = int(input("Digite a população inicial da cidade B: "))
+
+    taxa_a = float(input("Digite a taxa de crescimento da cidade A (ex: 0.03): "))
+    taxa_b = float(input("Digite a taxa de crescimento da cidade B (ex: 0.015): "))
+
+   
+
+    
+    
+
+
    
